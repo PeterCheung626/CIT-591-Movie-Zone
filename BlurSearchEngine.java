@@ -23,7 +23,7 @@ public class BlurSearchEngine {
     private static final String poster = "https://image.tmdb.org/t/p/w1280/";
     private static final String head = "https://api.themoviedb.org/3";
     private String url;
-    ArrayList<Integer> movies;
+    ArrayList<Movie> movies;
     ArrayList<String> cast;
     
     /**
@@ -94,9 +94,10 @@ public class BlurSearchEngine {
                 for (int i = 0; i < jsonMovies.length(); i++) {
                 		int id = jsonMovies.getJSONObject(i).getInt("id");
                 		System.out.println("id : " + id);
-                                movies.add(id);
-                		//ExactSearchEngine s = new ExactSearchEngine(id, true);
-                		//s.connect();
+                                //movies.add(id);
+                		ExactSearchEngine s = new ExactSearchEngine(id);
+                		s.connect();
+                                movies.add(s.getMovie());
                 		//System.out.println(s.getMovie().getTitle());
                 }
 
@@ -114,7 +115,7 @@ public class BlurSearchEngine {
         return null;
 	}
         
-        public ArrayList<Integer> getMovies() {
+        public ArrayList<Movie> getMovies() {
             return movies;
         }
 }

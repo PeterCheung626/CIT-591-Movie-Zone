@@ -25,6 +25,7 @@ public class ExactSearchEngine {
 	private Movie movie;
 	private String keyUrl;
         private String castUrl;
+        
 	/**
 	 * constructor that takes the movie id
 	 * @param id
@@ -39,7 +40,7 @@ public class ExactSearchEngine {
 
 	/**
 	 * this method get json object from url
-	 * 
+	 * this method connect url for movie details
 	 * @return success/ error message
 	 */
 	public String connect() {
@@ -173,20 +174,25 @@ public class ExactSearchEngine {
 
 				JSONObject jsonObject = new JSONObject(result);
 				// System.out.println(result);
-				JSONArray jsonKeywords = jsonObject.getJSONArray("cast");
-				for (int i = 0; i < jsonKeywords.length(); i++) {
-					JSONObject k = jsonKeywords.getJSONObject(i);
+				JSONArray cast = jsonObject.getJSONArray("cast");
+				for (int i = 0; i < cast.length(); i++) {
+					JSONObject k = cast.getJSONObject(i);
 					String name = k.getString("name");
-                                        String cast;
-                                        try {
-                                            cast = k.getString("character");
-                                        } catch (JSONException e) {
-                                            cast = k.getString("job");
-                                        }
-                                        
+                                       
 					// System.out.println(word);
-					m.addCast(name, cast);
+					m.addCast(name);
 				}
+                                JSONArray crews = jsonObject.getJSONArray("crew");
+                                String directorName = "";
+                                for (int i = 0; i < crews.length(); i++) {
+                                    JSONObject d = crews.getJSONObject(i);
+                                    String job = d.getString("job");
+                                    if (job.equalsIgnoreCase("director")) {
+                                        directorName = d.getString("name");
+                                        System.out.println(directorName);
+                                        m.setDirector(directorName);
+                                    }
+                                }
 
 			} catch (JSONException e) {
 				e.printStackTrace();

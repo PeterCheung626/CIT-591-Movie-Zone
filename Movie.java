@@ -20,14 +20,15 @@ public class Movie {
 	private String overView;
         private String language;
         private String homepage;
+        private String director;
 	private Date releaseDate;
 	private ArrayList<String> genres;
 	private ArrayList<String> keywords;
 	private ArrayList<String> productComp;
         private ArrayList<String> productCountry;
-        private HashMap<String, String> cast;
+        private ArrayList<String> cast;
 	private static final String postHead = "https://image.tmdb.org/t/p/w1280/";
-        private ArrayList<Integer> similiar;
+        
 
 	// comparators for sorting
 	private static final Comparator<Movie> BY_ID = new ById();
@@ -89,9 +90,6 @@ public class Movie {
 		} catch (Exception e) {
 
 		}
-		
-		searchSimiliarMovies();
-
 	}
 	
 	/**
@@ -108,13 +106,20 @@ public class Movie {
          * @param n name
          * @param c character/job
          */
-        public void addCast(String n, String c) {
-            cast.put(n, c);
+        public void addCast(String n) {
+            cast.add(n);
         }
         
-        private void searchSimiliarMovies () {
+        /**
+         * this method set the director name
+         * @param n director name
+         */
+        public void setDirector(String n) {
+            director = n;
+        }
+        public ArrayList<Movie> getSimiliarMovies () {
             BlurSearchEngine bse = new BlurSearchEngine(this.id);
-            similiar = bse.getMovies();
+            return bse.getMovies();
         }
 	private static class ById implements Comparator<Movie> {
 		public int compare(Movie f, Movie s) {
@@ -185,10 +190,6 @@ public class Movie {
 	public ArrayList<String> getProduct_comp() {
 		return productComp;
 	}
-
-	public ArrayList<Integer> getSimiliarMovies() {
-            return similiar;
-        }
         
         public ArrayList<String> getProductCountry() {
             return productCountry;
@@ -202,12 +203,6 @@ public class Movie {
             return homepage;
         }
         
-        public String getDirector() {
-            for (String n : cast.keySet()) {
-                if (cast.get(n).equalsIgnoreCase("director"));
-                return n;
-            }
-            return "";
-        }
+        
 }
 
