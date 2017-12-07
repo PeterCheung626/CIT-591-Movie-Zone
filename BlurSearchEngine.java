@@ -110,4 +110,8 @@ public class BlurSearchEngine {
         }
         return null;
 	}
+        
+        public ArrayList<Movie> getMovies() {
+            return movies;
+        }
 }

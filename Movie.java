@@ -12,14 +12,18 @@ import org.json.*;
 
 public class Movie {
 	private int id;
+        private int runtime;
 	private double popularity;
 	private String title;
 	private String poster;
 	private String overView;
+        private String language;
+        private String homepage;
 	private Date releaseDate;
 	private ArrayList<String> genres;
 	private ArrayList<String> keywords;
-	private ArrayList<String> product_comp;
+	private ArrayList<String> productComp;
+        private ArrayList<String> productCountry;
 	private static final String postHead = "https://image.tmdb.org/t/p/w1280/";
         private ArrayList<Movie> similiar;
 
@@ -41,7 +45,10 @@ public class Movie {
 			}
 			overView = m.getString("overview");
 			releaseDate = new Date(m.getString("release_date"));
-
+                        language = m.getString("original_language");
+                        homepage = m.getString("homepage");
+                        runtime = m.getInt("runtime");
+                            
 			// get all genres
 			genres = new ArrayList<>();
 			JSONArray g = m.getJSONArray("genres");
@@ -52,16 +59,28 @@ public class Movie {
 			}
 
 			// get all production companies
-			product_comp = new ArrayList<>();
+			productComp = new ArrayList<>();
 			try {
 				JSONArray pc = new JSONArray(m.getString("production_companies"));
 				for (int i = 0; i < pc.length(); i++) {
 					JSONObject company = pc.getJSONObject(i);
-					product_comp.add(company.getString("name"));
+					productComp.add(company.getString("name"));
 				}
 			} catch (JSONException e) {
 				// no production company
 			}
+                        
+                        //get product countries
+                        productCountry = new ArrayList<String>();
+                        try {
+                            JSONArray pc = new JSONArray(m.getString("production_countries"));
+                            for (int i = 0; i < pc.length(); i++) {
+					JSONObject country = pc.getJSONObject(i);
+					productCountry.add(country.getString("name"));
+				}
+                        } catch (JSONException e) {
+                            
+                        }
 
 		} catch (JSONException e) {
 			e.printStackTrace();
@@ -82,8 +101,9 @@ public class Movie {
 		keywords.add(s);
 	}
         
-        private void getSimiliarMovies () {
-            
+        private void searchSimiliarMovies () {
+            BlurSearchEngine bse = new BlurSearchEngine(this.id);
+            similiar = bse.getMovies();
         }
 	private static class ById implements Comparator<Movie> {
 		public int compare(Movie f, Movie s) {
@@ -152,10 +172,23 @@ public class Movie {
 	}
 
 	public ArrayList<String> getProduct_comp() {
-		return product_comp;
+		return productComp;
 	}
 
-	
-
+	public ArrayList<Movie> getSimiliarMovies() {
+            return similiar;
+        }
+        
+        public ArrayList<String> getProductCountry() {
+            return productCountry;
+        }
+        
+        public int getRunTime() {
+            return runtime;
+        }
+        
+        public String getHomePage() {
+            return homepage;
+        }
 }
 

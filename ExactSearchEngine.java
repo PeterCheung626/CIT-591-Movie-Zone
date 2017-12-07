@@ -23,16 +23,16 @@ public class ExactSearchEngine {
 	private static final String head = "https://api.themoviedb.org/3";
 	private String url;
 	private Movie movie;
-	private String keyUrl;
+	//private String keyUrl;
 
 	/**
 	 * constructor that takes the movie id.
 	 * 
 	 * @param id
 	 */
-	public ExactSearchEngine(int id) {
+	public ExactSearchEngine(int id, boolean getMovie) {
 		url = head + "/movie/" + id + keyString;
-		keyUrl = head + "/movie/" + id + "/keywords" + keyString;
+		//keyUrl = head + "/movie/" + id + "/keywords" + keyString;
 	}
 
 	/**
