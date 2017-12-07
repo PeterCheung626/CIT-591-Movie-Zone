@@ -26,16 +26,15 @@ public class ExactSearchEngine {
 	private String keyUrl;
         private String castUrl;
 	/**
-	 * constructor that takes the movie id.
-	 * 
+	 * constructor that takes the movie id
 	 * @param id
 	 */
-	public ExactSearchEngine(int id, boolean getMovie) {
-            if (getMovie) {
+	public ExactSearchEngine(int id) {
+            
 		url = head + "/movie/" + id + keyString;
 		keyUrl = head + "/movie/" + id + "/keywords" + keyString;
                 castUrl = head + "/movie/" + id + "/credits" + keyString;
-            }
+        
 	}
 
 	/**
