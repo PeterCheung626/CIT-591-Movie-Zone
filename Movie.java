@@ -27,7 +27,7 @@ public class Movie {
         private ArrayList<String> productCountry;
         private HashMap<String, String> cast;
 	private static final String postHead = "https://image.tmdb.org/t/p/w1280/";
-        private ArrayList<Movie> similiar;
+        private ArrayList<Integer> similiar;
 
 	// comparators for sorting
 	private static final Comparator<Movie> BY_ID = new ById();
@@ -90,7 +90,7 @@ public class Movie {
 
 		}
 		
-		
+		searchSimiliarMovies();
 
 	}
 	
@@ -186,7 +186,7 @@ public class Movie {
 		return productComp;
 	}
 
-	public ArrayList<Movie> getSimiliarMovies() {
+	public ArrayList<Integer> getSimiliarMovies() {
             return similiar;
         }
         
