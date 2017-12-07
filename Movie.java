@@ -201,5 +201,13 @@ public class Movie {
         public String getHomePage() {
             return homepage;
         }
+        
+        public String getDirector() {
+            for (String n : cast.keySet()) {
+                if (cast.get(n).equalsIgnoreCase("director"));
+                return n;
+            }
+            return "";
+        }
 }
 
