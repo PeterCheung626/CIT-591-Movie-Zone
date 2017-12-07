@@ -23,16 +23,19 @@ public class ExactSearchEngine {
 	private static final String head = "https://api.themoviedb.org/3";
 	private String url;
 	private Movie movie;
-	//private String keyUrl;
-
+	private String keyUrl;
+        private String castUrl;
 	/**
 	 * constructor that takes the movie id.
 	 * 
 	 * @param id
 	 */
 	public ExactSearchEngine(int id, boolean getMovie) {
+            if (getMovie) {
 		url = head + "/movie/" + id + keyString;
-		//keyUrl = head + "/movie/" + id + "/keywords" + keyString;
+		keyUrl = head + "/movie/" + id + "/keywords" + keyString;
+                castUrl = head + "/movie/" + id + "/credits" + keyString;
+            }
 	}
 
 	/**
@@ -67,6 +70,7 @@ public class ExactSearchEngine {
 				System.out.println(movie.getOverView());
 				System.out.println(movie.getTitle());
 				findKeywords(movie);
+                                findCast(movie);
 
 			} catch (JSONException e) {
 				e.printStackTrace();
@@ -148,5 +152,57 @@ public class ExactSearchEngine {
 		}
 
 	}
+        
+        private void findCast(Movie m) {
+            String result = "";
+		URL keywordUrl;
+
+		HttpURLConnection keywordUrlConnection = null;
+		try {
+			keywordUrl = new URL(castUrl);
+			keywordUrlConnection = (HttpURLConnection) keywordUrl.openConnection();
+			InputStream in = keywordUrlConnection.getInputStream();
+			InputStreamReader reader = new InputStreamReader(in);
+			int data = reader.read();
+
+			while (data != -1) {
+				char current = (char) data;
+				result += current;
+				data = reader.read();
+			}
+			try {
+
+				JSONObject jsonObject = new JSONObject(result);
+				// System.out.println(result);
+				JSONArray jsonKeywords = jsonObject.getJSONArray("cast");
+				for (int i = 0; i < jsonKeywords.length(); i++) {
+					JSONObject k = jsonKeywords.getJSONObject(i);
+					String name = k.getString("name");
+                                        String cast;
+                                        try {
+                                            cast = k.getString("character");
+                                        } catch (JSONException e) {
+                                            cast = k.getString("job");
+                                        }
+                                        
+					// System.out.println(word);
+					m.addCast(name, cast);
+				}
+
+			} catch (JSONException e) {
+				e.printStackTrace();
+				System.out.println("results not found");
+			}
+
+		} catch (MalformedURLException e) {
+			e.printStackTrace();
+			// Toast.makeText(getApplicationContext(), "Cound not find movie",
+			// Toast.LENGTH_LONG);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
+	}
+        
 }
 

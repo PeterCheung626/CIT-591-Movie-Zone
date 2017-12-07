@@ -7,6 +7,7 @@ package moviezone;
 
 import java.util.ArrayList;
 import java.util.Comparator;
+import java.util.HashMap;
 
 import org.json.*;
 
@@ -24,6 +25,7 @@ public class Movie {
 	private ArrayList<String> keywords;
 	private ArrayList<String> productComp;
         private ArrayList<String> productCountry;
+        private HashMap<String, String> cast;
 	private static final String postHead = "https://image.tmdb.org/t/p/w1280/";
         private ArrayList<Movie> similiar;
 
@@ -93,13 +95,22 @@ public class Movie {
 	}
 	
 	/**
-	 * this method find all the keywords of this movie
+	 * this method add a keywords of this movie
 	 * @author mayitian
 	 *
 	 */
 	public void addKeywords(String s) {
 		keywords.add(s);
 	}
+        
+        /**
+         * this method add a cast member
+         * @param n name
+         * @param c character/job
+         */
+        public void addCast(String n, String c) {
+            cast.put(n, c);
+        }
         
         private void searchSimiliarMovies () {
             BlurSearchEngine bse = new BlurSearchEngine(this.id);

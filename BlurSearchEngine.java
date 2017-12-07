@@ -24,6 +24,7 @@ public class BlurSearchEngine {
     private static final String head = "https://api.themoviedb.org/3";
     private String url;
     ArrayList<Movie> movies;
+    ArrayList<String> cast;
     
     /**
      * constructor for similar movie search
@@ -36,6 +37,7 @@ public class BlurSearchEngine {
     /**
      * search movies base on title
      * @param title
+     * @param getMovie, false for search 
      */
     public BlurSearchEngine (String title) {
         String tmp = title.replace(" ", "%20");
@@ -92,7 +94,7 @@ public class BlurSearchEngine {
                 for (int i = 0; i < jsonMovies.length(); i++) {
                 		int id = jsonMovies.getJSONObject(i).getInt("id");
                 		System.out.println("id : " + id);
-                		ExactSearchEngine s = new ExactSearchEngine(id);
+                		ExactSearchEngine s = new ExactSearchEngine(id, true);
                 		s.connect();
                 		//System.out.println(s.getMovie().getTitle());
                 }
