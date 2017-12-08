@@ -3,15 +3,23 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/Users/yufancheng/NetBeansProjects/MovieZone/src/moviezone/SearchResult.java</file>
+            <file>file:/Users/yufancheng/NetBeansProjects/MovieZone/src/moviezone/MovieSearch.java</file>
+            <file>file:/Users/yufancheng/NetBeansProjects/MovieZone/src/MovieSource/BlurSearchEngine.java</file>
             <file>file:/Users/yufancheng/NetBeansProjects/MovieZone/src/moviezone/ZoneUser.java</file>
             <file>file:/Users/yufancheng/NetBeansProjects/MovieZone/src/moviezone/MovieInterface.java</file>
+            <file>file:/Users/yufancheng/NetBeansProjects/MovieZone/src/MovieSource/Movie.java</file>
+            <file>file:/Users/yufancheng/NetBeansProjects/MovieZone/src/MovieSource/ExactSearchEngine.java</file>
             <file>file:/Users/yufancheng/NetBeansProjects/MovieZone/src/moviezone/WatchedList2.java</file>
-            <file>file:/Users/yufancheng/NetBeansProjects/MovieZone/src/moviezone/Movie.java</file>
+            <file>file:/Users/yufancheng/NetBeansProjects/MovieZone/src/moviezone/MovieReserve.java</file>
+            <file>file:/Users/yufancheng/NetBeansProjects/MovieZone/src/moviezone/Search.java</file>
+            <file>file:/Users/yufancheng/NetBeansProjects/MovieZone/src/MovieSource/Date.java</file>
+            <file>file:/Users/yufancheng/NetBeansProjects/MovieZone/src/moviezone/WatchedListAuto.java</file>
+            <file>file:/Users/yufancheng/NetBeansProjects/MovieZone/src/moviezone/WatchedListCode.java</file>
+            <file>file:/Users/yufancheng/NetBeansProjects/MovieZone/src/MovieSource/SearchEngineTest.java</file>
             <file>file:/Users/yufancheng/NetBeansProjects/MovieZone/src/moviezone/WatchesList.java</file>
+            <file>file:/Users/yufancheng/NetBeansProjects/MovieZone/src/moviezone/Test.java</file>
             <file>file:/Users/yufancheng/NetBeansProjects/MovieZone/src/moviezone/WatchedList.java</file>
             <file>file:/Users/yufancheng/NetBeansProjects/MovieZone/src/ImageTest.java</file>
-            <file>file:/Users/yufancheng/NetBeansProjects/MovieZone/src/moviezone/Search.java</file>
         </group>
     </open-files>
 </project-private>

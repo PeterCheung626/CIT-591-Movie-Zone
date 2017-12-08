@@ -116,7 +116,7 @@ public class Search extends javax.swing.JFrame {
 
         jLabel6.setText("jLabel6");
 
-        jPanel3.setLayout(new java.awt.GridLayout());
+        jPanel3.setLayout(new java.awt.GridLayout(1, 0));
 
         jButton2.setText("jButton2");
         jPanel3.add(jButton2);

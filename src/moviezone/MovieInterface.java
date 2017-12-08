@@ -79,7 +79,7 @@ public class MovieInterface extends javax.swing.JFrame {
         test1.add("hahah");
         test1.get(0);
         System.out.println(test1);
-        System.out.println(peter.getUserMovie());
+       // System.out.println(peter.getUserMovie());
         System.out.println(doc.getMovieName());
                 }catch(IOException e) {
             e.printStackTrace();
