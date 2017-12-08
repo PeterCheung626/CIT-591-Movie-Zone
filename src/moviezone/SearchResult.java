@@ -73,6 +73,9 @@ public class SearchResult extends JPanel {
                 imageUrls.add("https://images-na.ssl-images-amazon.com/images/M/MV5BMTU0ODQ4NDg2OF5BMl5BanBnXkFtZTgwNzczNTE4OTE@._V1_UX182_CR0,0,182,268_AL_.jpg");
                 imageUrls.add("https://images-na.ssl-images-amazon.com/images/M/MV5BMTM2NjAxOTQzNl5BMl5BanBnXkFtZTcwMjk4NzU3MQ@@._V1_UY268_CR8,0,182,268_AL_.jpg");
                 imageUrls.add("https://images-na.ssl-images-amazon.com/images/M/MV5BNzc2ZThkOGItZGY5YS00MDYwLTkyOTAtNDRmZWIwMGRhYTc0L2ltYWdlXkEyXkFqcGdeQXVyNjU0OTQ0OTY@._V1_UX182_CR0,0,182,268_AL_.jpg");
+                
+                
+                
                 create(imageUrls);
             }
         });
@@ -143,13 +146,20 @@ public class SearchResult extends JPanel {
         JFrame f = new JFrame();
         f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         JPanel head = new JPanel();
+        JPanel headline = new JPanel();
         head.setLayout(new BoxLayout(head, BoxLayout.Y_AXIS));
+        headline.setLayout(new FlowLayout(FlowLayout.LEFT));
+        JPanel searchPanel = new JPanel();
+        searchPanel.setLayout(new FlowLayout(FlowLayout.LEFT));
+        JLabel searchPrompt = new JLabel("Enter the movie Id, name or keyword:");
         JLabel pageTitle = new JLabel("Home Page");
        // JTextField searchTerm = new JTextField("Enter Search Term Here", 20);
-        head.setBackground(new java.awt.Color(97, 212, 195));
+        headline.setBackground(new java.awt.Color(97, 212, 195));
         pageTitle.setForeground(new java.awt.Color(255, 255, 255));
-       // pageTitle.setAlignmentX(Component.LEFT_ALIGNMENT);
-        head.add(pageTitle);
+       pageTitle.setAlignmentX(Component.LEFT_ALIGNMENT);
+       searchPanel.add(searchPrompt);
+        headline.add(pageTitle);
+        head.add(headline);
       //  head.setAlignmentX(pageTitle.LEFT_ALIGNMENT);
         // f.add(head);
          
@@ -187,7 +197,7 @@ public class SearchResult extends JPanel {
             p.add(addPages(newImg));
             cards.add(p, p.toString());
         }*/
-        JPanel searchPanel = new JPanel();
+        //JPanel searchPanel = new JPanel();
         JTextField searchTerm = new JTextField("Enter Search Term Here", 20);
         searchPanel.add(searchTerm);
         head.add(searchPanel);
