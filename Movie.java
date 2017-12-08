@@ -15,6 +15,7 @@ public class Movie {
 	private int id;
         private int runtime;
 	private double popularity;
+        private double voteAvg;
 	private String title;
 	private String poster;
 	private String overView;
@@ -37,6 +38,7 @@ public class Movie {
 
 	public Movie(JSONObject m) {
 		keywords = new ArrayList<>();
+                cast = new ArrayList<>();
 		try {
 			id = m.getInt("id");
 			popularity = m.getDouble("popularity");
@@ -51,6 +53,7 @@ public class Movie {
                         language = m.getString("original_language");
                         homepage = m.getString("homepage");
                         runtime = m.getInt("runtime");
+                        voteAvg = m.getDouble("vote_average");
                             
 			// get all genres
 			genres = new ArrayList<>();
@@ -119,6 +122,7 @@ public class Movie {
         }
         public ArrayList<Movie> getSimiliarMovies () {
             BlurSearchEngine bse = new BlurSearchEngine(this.id);
+            bse.connect();
             return bse.getMovies();
         }
 	private static class ById implements Comparator<Movie> {
@@ -203,6 +207,13 @@ public class Movie {
             return homepage;
         }
         
+        public String getDirector() {
+            return director;
+        }
+        
+        public double getVote() {
+            return voteAvg;
+        }
         
 }
 

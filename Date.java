@@ -48,6 +48,6 @@ public class Date {
     }
     
     public String toString() {
-        return month + " / " + day + " / " + year;
+        return year + " / " + month + " / " + day;
     }
 }

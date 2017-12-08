@@ -28,7 +28,7 @@ public class BlurSearchEngine {
     
     /**
      * constructor for similar movie search
-     * @param id
+     * @param id target movie id
      */
     public BlurSearchEngine (int id) {
         url = head + "/movie/" + id + "/similar" + keyString;   
@@ -93,11 +93,11 @@ public class BlurSearchEngine {
                 */
                 for (int i = 0; i < jsonMovies.length(); i++) {
                 		int id = jsonMovies.getJSONObject(i).getInt("id");
-                		System.out.println("id : " + id);
+                		//ystem.out.println("id : " + id);
                                 //movies.add(id);
                 		ExactSearchEngine s = new ExactSearchEngine(id);
                 		s.connect();
-                                movies.add(s.getMovie());
+                                if (s.getMovie() != null) movies.add(s.getMovie());
                 		//System.out.println(s.getMovie().getTitle());
                 }
 
@@ -110,7 +110,7 @@ public class BlurSearchEngine {
             e.printStackTrace();
             //Toast.makeText(getApplicationContext(), "Cound not find movie", Toast.LENGTH_LONG);
         } catch (IOException e) {
-            e.printStackTrace();
+           // e.printStackTrace();
         }
         return null;
 	}

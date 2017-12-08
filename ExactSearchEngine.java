@@ -35,6 +35,7 @@ public class ExactSearchEngine {
 		url = head + "/movie/" + id + keyString;
 		keyUrl = head + "/movie/" + id + "/keywords" + keyString;
                 castUrl = head + "/movie/" + id + "/credits" + keyString;
+                
         
 	}
 
@@ -44,7 +45,7 @@ public class ExactSearchEngine {
 	 * @return success/ error message
 	 */
 	public String connect() {
-		ArrayList<Movie> movies = new ArrayList<>();
+		
 		String result = "";
 		URL searchUrl;
 
@@ -62,13 +63,13 @@ public class ExactSearchEngine {
 				data = reader.read();
 			}
 			try {
-
+                                //System.out.println(result);
 				JSONObject jsonObject = new JSONObject(result);
 				// moviesJSON.add(jsonObject);
 				movie = new Movie(jsonObject);
 				// movies.add(m);
-				System.out.println(movie.getOverView());
-				System.out.println(movie.getTitle());
+				//System.out.println(movie.getOverView());
+				//System.out.println(movie.getTitle());
 				findKeywords(movie);
                                 findCast(movie);
 
@@ -81,8 +82,9 @@ public class ExactSearchEngine {
 			e.printStackTrace();
 			// Toast.makeText(getApplicationContext(), "Cound not find movie",
 			// Toast.LENGTH_LONG);
-		} catch (IOException e) {
-			e.printStackTrace();
+		} catch (Exception e) {
+                        //System.out.println("a movie not found");
+			//e.printStackTrace();
 		}
 		return null;
 	}
@@ -103,7 +105,8 @@ public class ExactSearchEngine {
 	 * @return
 	 */
 	public Movie getMovie() {
-		return movie;
+            
+           return movie;
 	}
 
 	/**
@@ -148,7 +151,7 @@ public class ExactSearchEngine {
 			// Toast.makeText(getApplicationContext(), "Cound not find movie",
 			// Toast.LENGTH_LONG);
 		} catch (IOException e) {
-			e.printStackTrace();
+			//e.printStackTrace();
 		}
 
 	}
@@ -171,7 +174,7 @@ public class ExactSearchEngine {
 				data = reader.read();
 			}
 			try {
-
+                                //System.out.println(result);
 				JSONObject jsonObject = new JSONObject(result);
 				// System.out.println(result);
 				JSONArray cast = jsonObject.getJSONArray("cast");
