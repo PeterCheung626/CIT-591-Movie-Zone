@@ -17,7 +17,7 @@ public class SearchTester {
     
     //dont't run all queries together!!!!(over request limits)
     
-    ExactSearchEngine ese = new ExactSearchEngine(9538);
+    ExactSearchEngine ese = new ExactSearchEngine(343668);
     ese.connect();
     Movie m = ese.getMovie();
     System.out.println("title: " + m.getTitle());
@@ -25,7 +25,7 @@ public class SearchTester {
     System.out.println("poster : " + m.getPoster());
     System.out.println("popularity : " + m.getPopularity());
     System.out.println("vote average : " + m.getVote());
-    System.out.println("overview : " + m.getOverView());
+    System.out.println("overview : " + m.getOverview());
     System.out.println("director : " + m.getDirector());
     System.out.println("language : " + m.getLanguage());
     System.out.println("genres: ");
@@ -44,16 +44,20 @@ public class SearchTester {
     System.out.println("\n");
     System.out.println("runtime : " + m.getRunTime());
     System.out.println("home page: " + m.getHomePage());
-    
+    /*
     System.out.println("similiar movies:  ");
     for (Movie s : m.getSimilarMovies()) {
         //System.out.println(s.getId());
         System.out.println(s.getTitle());
     }
-    
+    */
     System.out.println();
-    
-     /*   
+    System.out.println("recommend movies:  ");
+    for (Movie s : m.getRecommendations()) {
+        //System.out.println(s.getId());
+        System.out.println(s.getTitle());
+    }
+      /* 
     // to search movies by title, call blurSearchEngine constructor with a string representing the title
     BlurSearchEngine bse = new BlurSearchEngine("superman");
     //connect() must be called to get data from api

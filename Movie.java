@@ -18,7 +18,7 @@ public class Movie {
         private double voteAvg;
 	private String title;
 	private String poster;
-	private String overView;
+	private String overview;
         private String language;
         private String homepage;
         private String director;
@@ -48,7 +48,7 @@ public class Movie {
 			} catch (JSONException e) {
 				System.out.println("poster not found");
 			}
-			overView = m.getString("overview");
+			overview = m.getString("overview");
 			releaseDate = new Date(m.getString("release_date"));
                         language = m.getString("original_language");
                         homepage = m.getString("homepage");
@@ -121,8 +121,15 @@ public class Movie {
             director = n;
         }
         public ArrayList<Movie> getSimilarMovies () {
-            BlurSearchEngine bse = new BlurSearchEngine(this.id);
+            BlurSearchEngine bse = new BlurSearchEngine(this.id, 1);
             bse.connect();
+            return bse.getMovies();
+        }
+        
+        public ArrayList<Movie> getRecommendations() {
+            BlurSearchEngine bse = new BlurSearchEngine(this.id, 2);
+            bse.connect();
+            
             return bse.getMovies();
         }
 	private static class ById implements Comparator<Movie> {
@@ -175,8 +182,8 @@ public class Movie {
 		return title;
 	}
 
-	public String getOverView() {
-		return overView;
+	public String getOverview() {
+		return overview;
 	}
 
 	public String getPoster() {

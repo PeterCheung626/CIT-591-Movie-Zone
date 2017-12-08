@@ -27,11 +27,14 @@ public class BlurSearchEngine {
     ArrayList<String> cast;
     
     /**
-     * constructor for similar movie search
+     * constructor for similar/recommend movie search
      * @param id target movie id
+     * @param select 1 for similar search, 2 for recommendation
      */
-    public BlurSearchEngine (int id) {
-        url = head + "/movie/" + id + "/similar" + keyString;   
+    public BlurSearchEngine (int id, int select) {
+        if (select == 1) url = head + "/movie/" + id + "/similar" + keyString + "&language=en-US&page=1";   
+        else url = head + "/movie/" + id + "/recommendations" + keyString + "&language=en-US&page=1";
+        System.out.println(url);
     }
     
     /**
@@ -41,7 +44,7 @@ public class BlurSearchEngine {
      */
     public BlurSearchEngine (String title) {
         String tmp = title.replace(" ", "%20");
-        url = head + "/search/movie" + keyString + "&query=" + tmp + "&include_adult=false";//&page=1
+        url = head + "/search/movie" + keyString + "&query=" + tmp + "&include_adult=false&page=1";//&page=1
     }
     
   //SEARCH for English movies(now playing/ top rated/ upcoming/ keywords )
@@ -59,6 +62,8 @@ public class BlurSearchEngine {
     		}
                 System.out.println(url);
     }
+    
+   
     
     /**
      * this method get json object from url
