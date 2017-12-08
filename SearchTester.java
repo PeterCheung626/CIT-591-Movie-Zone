@@ -46,7 +46,7 @@ public class SearchTester {
     System.out.println("home page: " + m.getHomePage());
     
     System.out.println("similiar movies:  ");
-    for (Movie s : m.getSimiliarMovies()) {
+    for (Movie s : m.getSimilarMovies()) {
         //System.out.println(s.getId());
         System.out.println(s.getTitle());
     }

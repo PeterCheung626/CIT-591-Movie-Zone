@@ -120,7 +120,7 @@ public class Movie {
         public void setDirector(String n) {
             director = n;
         }
-        public ArrayList<Movie> getSimiliarMovies () {
+        public ArrayList<Movie> getSimilarMovies () {
             BlurSearchEngine bse = new BlurSearchEngine(this.id);
             bse.connect();
             return bse.getMovies();
