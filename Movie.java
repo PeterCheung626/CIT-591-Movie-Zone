@@ -215,5 +215,9 @@ public class Movie {
             return voteAvg;
         }
         
+        public ArrayList<String> getKeywords() {
+            return keywords;
+        }
+        
 }
 

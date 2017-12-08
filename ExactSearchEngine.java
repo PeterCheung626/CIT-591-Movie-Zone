@@ -192,7 +192,7 @@ public class ExactSearchEngine {
                                     String job = d.getString("job");
                                     if (job.equalsIgnoreCase("director")) {
                                         directorName = d.getString("name");
-                                        System.out.println(directorName);
+                                        //System.out.println(directorName);
                                         m.setDirector(directorName);
                                     }
                                 }

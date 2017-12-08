@@ -44,7 +44,7 @@ public class BlurSearchEngine {
         url = head + "/search/movie" + keyString + "&query=" + tmp + "&include_adult=false";//&page=1
     }
     
-  //SEARCH for English movies(now playing/ top rated/ keywords )
+  //SEARCH for English movies(now playing/ top rated/ upcoming/ keywords )
     public BlurSearchEngine (String condition, int select) {
     		if (select < 0) {
     			new BlurSearchEngine(condition);			
@@ -52,11 +52,12 @@ public class BlurSearchEngine {
     		else {
 	    		
 			if (select == 1) {
-				url = head + "/movie/" + condition.replace(" ", "_") + keyString + "&language=en-US";
+				url = head + "/movie/" + condition.replace(" ", "_") + keyString + "&language=en-US&page=1";
 			} else if (select == 2) {
-				url = head + "/search/keyword" + keyString + "&query=" + condition.replace(" ", "%20") + "&page=1";
+				url = head + "/search/keyword" + keyString + "&query=" + condition.replace(" ", "%20") + "&language=en-US&page=1";
 			}
     		}
+                System.out.println(url);
     }
     
     /**
@@ -67,7 +68,7 @@ public class BlurSearchEngine {
         movies = new ArrayList<>();
         String result = "";
         URL searchUrl ;
-        
+        System.out.println(url);
         HttpURLConnection urlConnection = null;
         try {
             searchUrl = new URL(url);
@@ -110,7 +111,7 @@ public class BlurSearchEngine {
             e.printStackTrace();
             //Toast.makeText(getApplicationContext(), "Cound not find movie", Toast.LENGTH_LONG);
         } catch (IOException e) {
-           // e.printStackTrace();
+           e.printStackTrace();
         }
         return null;
 	}
