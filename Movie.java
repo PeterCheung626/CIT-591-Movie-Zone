@@ -219,5 +219,12 @@ public class Movie {
             return keywords;
         }
         
+        public ArrayList<String> getCast() {
+            return cast;
+        }
+        
+        public String getLanguage() {
+            return language;
+        }
 }
 

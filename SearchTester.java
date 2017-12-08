@@ -27,13 +27,19 @@ public class SearchTester {
     System.out.println("vote average : " + m.getVote());
     System.out.println("overview : " + m.getOverView());
     System.out.println("director : " + m.getDirector());
+    System.out.println("language : " + m.getLanguage());
     System.out.println("genres: ");
     for (String s : m.getGenres()) {
         System.out.print(" " + s + " ");
     }
     System.out.println("keywords: ");
     for (String s : m.getKeywords()) {
-        System.out.print(" " + s + " ");
+        System.out.print(s + " ");
+    }
+    System.out.println();
+    System.out.println("cast: ");
+    for (String s : m.getCast()) {
+        System.out.println(s + " ");
     }
     System.out.println("\n");
     System.out.println("runtime : " + m.getRunTime());
@@ -47,7 +53,7 @@ public class SearchTester {
     
     System.out.println();
     
-        
+     /*   
     // to search movies by title, call blurSearchEngine constructor with a string representing the title
     BlurSearchEngine bse = new BlurSearchEngine("superman");
     //connect() must be called to get data from api
@@ -97,6 +103,6 @@ public class SearchTester {
     
     
     
-    
+    */
     }
 }
