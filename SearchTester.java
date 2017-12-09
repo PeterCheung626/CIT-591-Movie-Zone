@@ -16,8 +16,8 @@ public class SearchTester {
     //search a movie by id and print out its attributes
     
     //dont't run all queries together!!!!(over request limits)
-    /*
-    ExactSearchEngine ese = new ExactSearchEngine(124949);
+    
+    ExactSearchEngine ese = new ExactSearchEngine(221782);
     ese.connect();
     Movie m = ese.getMovie();
     System.out.println("title: " + m.getTitle());
@@ -27,26 +27,66 @@ public class SearchTester {
     //System.out.println("vote average : " + m.getVote());
     System.out.println("overview : " + m.getOverview());
     System.out.println("director : " + m.getDirector());
-    System.out.println("language : " + m.getLanguage());
-    System.out.println("genres: ");
-    for (String s : m.getGenres()) {
-        System.out.print(" " + s + " ");
-    }
-    System.out.println("keywords: ");
-    for (String s : m.getKeywords()) {
-        System.out.print(s + " ");
-    }
-    System.out.println();
-    System.out.println("cast: ");
-    for (String s : m.getCast()) {
-        System.out.println(s + " ");
-    }
-    System.out.println("\n");
-    System.out.println("runtime : " + m.getRunTime());
-    //System.out.println("home page: " + m.getHomePage());
-    for (String s: m.getProductCountry()) {
-    System.out.println("country: " + s);
-    }
+    System.out.println(m.getReleaseDate()==null);
+    System.out.println(m.getGenres()==null);
+    System.out.println(m.getLanguages()==null);
+    System.out.println(m.getKeywords()==null);
+    System.out.println(m.getProductCountry()==null);
+   // System.out.println(m.getDate()==null);
+    
+//        try {
+//            System.out.println(m.getReleaseDate());
+//        } catch (NullPointerException e) {
+//            e.printStackTrace();
+//        }
+//        System.out.println("========");
+//        try {
+//            for (String s : m.getLanguages()) {
+//                System.out.println("language : " + s);
+//            }
+//        } catch (NullPointerException e) {
+//            e.printStackTrace();
+//        }
+//        try {
+//            System.out.println("genres: ");
+//            for (String s : m.getGenres()) {
+//                System.out.print(" " + s + " ");
+//            }
+//        } catch (NullPointerException e) {
+//            e.printStackTrace();
+//        }
+//
+//        try {
+//            System.out.println("keywords: ");
+//            for (String s : m.getKeywords()) {
+//                System.out.println(s + " ");
+//            }
+//        } catch (NullPointerException e) {
+//            e.printStackTrace();
+//        }
+//
+//        try {
+//            System.out.println("countries: ");
+//            for (String s : m.getProductCountry()) {
+//                System.out.print(s + " ");
+//            }
+//        } catch (NullPointerException e) {
+//            e.printStackTrace();
+//        }
+    
+    
+    
+//    System.out.println();
+//    System.out.println("cast: ");
+//    for (String s : m.getCast()) {
+//        System.out.println(s + " ");
+//    }
+//    System.out.println("\n");
+//    System.out.println("runtime : " + m.getRunTime());
+//    //System.out.println("home page: " + m.getHomePage());
+//    for (String s: m.getProductCountry()) {
+//    System.out.println("country: " + s);
+//    }
     /*
     System.out.println("similiar movies:  ");
     for (Movie s : m.getSimilarMovies()) {
@@ -101,14 +141,14 @@ public class SearchTester {
     */
     
     //search movies by keywords
-    BlurSearchEngine bse4 = new BlurSearchEngine("classic", 2);
-    bse4.connect();
-    System.out.println(bse4.getMovies().size());
-    for (Movie b : bse4.getMovies()) {
-        System.out.println(b.getTitle());
-        System.out.println(b.getPoster());
-    
-    }
+//    BlurSearchEngine bse4 = new BlurSearchEngine("classic", 2);
+//    bse4.connect();
+//    System.out.println(bse4.getMovies().size());
+//    for (Movie b : bse4.getMovies()) {
+//        System.out.println(b.getTitle());
+//        System.out.println(b.getPoster());
+//    
+//    }
     
     
     
