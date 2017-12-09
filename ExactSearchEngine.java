@@ -63,7 +63,7 @@ public class ExactSearchEngine {
 				data = reader.read();
 			}
 			try {
-                                //System.out.println(result);
+                                System.out.println(result);
 				JSONObject jsonObject = new JSONObject(result);
 				// moviesJSON.add(jsonObject);
 				movie = new Movie(jsonObject);

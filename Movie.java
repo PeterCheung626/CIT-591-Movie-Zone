@@ -15,12 +15,12 @@ public class Movie {
 	private int id;
         private int runtime;
 	private double popularity;
-        private double voteAvg;
+        private double ratings;
 	private String title;
 	private String poster;
 	private String overview;
         private String language;
-        private String homepage;
+        //private String homepage;
         private String director;
 	private Date releaseDate;
 	private ArrayList<String> genres;
@@ -51,9 +51,9 @@ public class Movie {
 			overview = m.getString("overview");
 			releaseDate = new Date(m.getString("release_date"));
                         language = m.getString("original_language");
-                        homepage = m.getString("homepage");
+                        //homepage = m.getString("homepage");
                         runtime = m.getInt("runtime");
-                        voteAvg = m.getDouble("vote_average");
+                        ratings = m.getDouble("vote_average");
                             
 			// get all genres
 			genres = new ArrayList<>();
@@ -67,7 +67,7 @@ public class Movie {
 			// get all production companies
 			productComp = new ArrayList<>();
 			try {
-				JSONArray pc = new JSONArray(m.getString("production_companies"));
+				JSONArray pc = m.getJSONArray("production_companies");
 				for (int i = 0; i < pc.length(); i++) {
 					JSONObject company = pc.getJSONObject(i);
 					productComp.add(company.getString("name"));
@@ -77,15 +77,15 @@ public class Movie {
 			}
                         
                         //get product countries
-                        productCountry = new ArrayList<String>();
+                        productCountry = new ArrayList<>();
                         try {
-                            JSONArray pc = new JSONArray(m.getString("production_countries"));
+                            JSONArray pc = m.getJSONArray("production_countries");
                             for (int i = 0; i < pc.length(); i++) {
 					JSONObject country = pc.getJSONObject(i);
 					productCountry.add(country.getString("name"));
 				}
                         } catch (JSONException e) {
-                            
+                            e.printStackTrace();
                         }
 
 		} catch (JSONException e) {
@@ -209,17 +209,17 @@ public class Movie {
         public int getRunTime() {
             return runtime;
         }
-        
+        /*
         public String getHomePage() {
             return homepage;
         }
-        
+        */
         public String getDirector() {
             return director;
         }
         
-        public double getVote() {
-            return voteAvg;
+        public double getRatings() {
+            return ratings;
         }
         
         public ArrayList<String> getKeywords() {

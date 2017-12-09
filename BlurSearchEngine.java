@@ -32,8 +32,8 @@ public class BlurSearchEngine {
      * @param select 1 for similar search, 2 for recommendation
      */
     public BlurSearchEngine (int id, int select) {
-        if (select == 1) url = head + "/movie/" + id + "/similar" + keyString + "&language=en-US&page=1";   
-        else url = head + "/movie/" + id + "/recommendations" + keyString + "&language=en-US&page=1";
+        if (select == 1) url = head + "/movie/" + id + "/similar" + keyString + "&language=en-US";//&page=1";   
+        else url = head + "/movie/" + id + "/recommendations" + keyString + "&language=en-US";//&page=1";
         System.out.println(url);
     }
     

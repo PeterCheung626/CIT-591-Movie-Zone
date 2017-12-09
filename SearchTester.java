@@ -17,7 +17,7 @@ public class SearchTester {
     
     //dont't run all queries together!!!!(over request limits)
     
-    ExactSearchEngine ese = new ExactSearchEngine(343668);
+    ExactSearchEngine ese = new ExactSearchEngine(3598);
     ese.connect();
     Movie m = ese.getMovie();
     System.out.println("title: " + m.getTitle());
@@ -44,13 +44,16 @@ public class SearchTester {
     System.out.println("\n");
     System.out.println("runtime : " + m.getRunTime());
     System.out.println("home page: " + m.getHomePage());
+    for (String s: m.getProductCountry()) {
+    System.out.println("country: " + s);
+    }
     /*
     System.out.println("similiar movies:  ");
     for (Movie s : m.getSimilarMovies()) {
         //System.out.println(s.getId());
         System.out.println(s.getTitle());
     }
-    */
+    
     System.out.println();
     System.out.println("recommend movies:  ");
     for (Movie s : m.getRecommendations()) {
@@ -95,7 +98,8 @@ public class SearchTester {
     
     }
     
-    
+    */
+    /*
     //search movies by keywords
     BlurSearchEngine bse4 = new BlurSearchEngine("murder", 2);
     bse4.connect();
@@ -104,9 +108,9 @@ public class SearchTester {
         System.out.println(b.getTitle());
     
     }
-    
-    
-    
     */
+    
+    
+    
     }
 }
