@@ -32,6 +32,8 @@ public class SearchTester {
     System.out.println(m.getLanguages()==null);
     System.out.println(m.getKeywords()==null);
     System.out.println(m.getProductCountry()==null);
+     System.out.println(m.getCast()==null);
+    
    // System.out.println(m.getDate()==null);
     
 //        try {

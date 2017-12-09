@@ -226,6 +226,7 @@ public class Movie {
     }
 
     public ArrayList<String> getCast() {
+        if (cast.isEmpty()) return null;
         return cast;
     }
 
