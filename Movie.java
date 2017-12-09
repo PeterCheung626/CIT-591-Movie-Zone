@@ -46,6 +46,7 @@ public class Movie {
 			try {
 				poster = postHead + m.getString("poster_path");
 			} catch (JSONException e) {
+                            poster = "https://pbs.twimg.com/profile_images/600060188872155136/st4Sp6Aw.jpg";
 				System.out.println("poster not found");
 			}
 			overview = m.getString("overview");
@@ -60,18 +61,18 @@ public class Movie {
 			JSONArray g = m.getJSONArray("genres");
 			// JSONArray g = new JSONArray(genreInfo);
 			for (int i = 0; i < g.length(); i++) {
-				JSONObject genre = g.getJSONObject(i);
-				genres.add(genre.getString("name"));
+                            JSONObject genre = g.getJSONObject(i);
+                            genres.add(genre.getString("name"));
 			}
 
 			// get all production companies
 			productComp = new ArrayList<>();
 			try {
-				JSONArray pc = m.getJSONArray("production_companies");
-				for (int i = 0; i < pc.length(); i++) {
-					JSONObject company = pc.getJSONObject(i);
-					productComp.add(company.getString("name"));
-				}
+                            JSONArray pc = m.getJSONArray("production_companies");
+                            for (int i = 0; i < pc.length(); i++) {
+                                JSONObject company = pc.getJSONObject(i);
+                                productComp.add(company.getString("name"));
+                            }
 			} catch (JSONException e) {
 				// no production company
 			}
@@ -81,8 +82,8 @@ public class Movie {
                         try {
                             JSONArray pc = m.getJSONArray("production_countries");
                             for (int i = 0; i < pc.length(); i++) {
-					JSONObject country = pc.getJSONObject(i);
-					productCountry.add(country.getString("name"));
+                                    JSONObject country = pc.getJSONObject(i);
+                                    productCountry.add(country.getString("name"));
 				}
                         } catch (JSONException e) {
                             e.printStackTrace();

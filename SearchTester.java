@@ -16,15 +16,15 @@ public class SearchTester {
     //search a movie by id and print out its attributes
     
     //dont't run all queries together!!!!(over request limits)
-    
-    ExactSearchEngine ese = new ExactSearchEngine(3598);
+    /*
+    ExactSearchEngine ese = new ExactSearchEngine(124949);
     ese.connect();
     Movie m = ese.getMovie();
     System.out.println("title: " + m.getTitle());
     System.out.println("id : " + m.getId());
     System.out.println("poster : " + m.getPoster());
     System.out.println("popularity : " + m.getPopularity());
-    System.out.println("vote average : " + m.getVote());
+    //System.out.println("vote average : " + m.getVote());
     System.out.println("overview : " + m.getOverview());
     System.out.println("director : " + m.getDirector());
     System.out.println("language : " + m.getLanguage());
@@ -43,7 +43,7 @@ public class SearchTester {
     }
     System.out.println("\n");
     System.out.println("runtime : " + m.getRunTime());
-    System.out.println("home page: " + m.getHomePage());
+    //System.out.println("home page: " + m.getHomePage());
     for (String s: m.getProductCountry()) {
     System.out.println("country: " + s);
     }
@@ -99,16 +99,17 @@ public class SearchTester {
     }
     
     */
-    /*
+    
     //search movies by keywords
-    BlurSearchEngine bse4 = new BlurSearchEngine("murder", 2);
+    BlurSearchEngine bse4 = new BlurSearchEngine("classic", 2);
     bse4.connect();
     System.out.println(bse4.getMovies().size());
     for (Movie b : bse4.getMovies()) {
         System.out.println(b.getTitle());
+        System.out.println(b.getPoster());
     
     }
-    */
+    
     
     
     
