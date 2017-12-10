@@ -25,6 +25,7 @@ public class BlurSearchEngine {
     private String url;
     ArrayList<Movie> movies;
     ArrayList<String> cast;
+    int count;
     
     /**
      * constructor for similar/recommend movie search
@@ -32,6 +33,7 @@ public class BlurSearchEngine {
      * @param select 1 for similar search, 2 for recommendation
      */
     public BlurSearchEngine (int id, int select) {
+        count = 5;
         if (select == 1) url = head + "/movie/" + id + "/similar" + keyString + "&language=en-US";//&page=1";   
         else url = head + "/movie/" + id + "/recommendations" + keyString + "&language=en-US";//&page=1";
         //System.out.println(url);
@@ -43,12 +45,14 @@ public class BlurSearchEngine {
      * @param getMovie, false for search 
      */
     public BlurSearchEngine (String title) {
+        count = 20;
         String tmp = title.replace(" ", "%20");
         url = head + "/search/movie" + keyString + "&query=" + tmp + "&include_adult=false&page=1";//&page=1
     }
     
   //SEARCH for English movies(now playing/ top rated/ upcoming/ keywords )
     public BlurSearchEngine (String condition, int select) {
+        count = 20;
     		if (select < 0) {
     			new BlurSearchEngine(condition);			
     		}
@@ -97,7 +101,7 @@ public class BlurSearchEngine {
                 System.out.println(movie.getOverView());
                 System.out.println(movie.getTitle());
                 */
-                for (int i = 0; i < jsonMovies.length(); i++) {
+                for (int i = 0; i < jsonMovies.length() && i < count; i++) {
                 		int id = jsonMovies.getJSONObject(i).getInt("id");
                 		//ystem.out.println("id : " + id);
                                 //movies.add(id);

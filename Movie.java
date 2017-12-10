@@ -186,6 +186,7 @@ public class Movie {
     }
 
     public String getOverview() {
+        if (overview.length() > 350) return overview.substring(0, 350) + "...";
         return overview;
     }
 

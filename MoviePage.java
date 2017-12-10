@@ -36,149 +36,7 @@ public class MoviePage extends javax.swing.JFrame {
         //movie = m;
         initComponents();
         this.setLocationRelativeTo(null);
-        title.setText(m.getTitle());
-        if(m.getReleaseDate() == null) {
-            year.setText("");
-        } else {
-            year.setText("(" + m.getReleaseDate().getYear() + ")");
-        }
-        
-        try {
-            URL url = new URL(m.getPoster());
-            ImageIcon icon = new ImageIcon(ImageIO.read(url));
-            ImageIcon newIcon = new ImageIcon(icon.getImage().getScaledInstance(300, 372, Image.SCALE_DEFAULT));
-            poster.setIcon(newIcon);
-        } catch(IOException ex) {
-
-        }
-        
-        GridLayout layout = new GridLayout(9, 1);
-        layout.setVgap(10);
-        jPanel3.setLayout(layout);
-        id.setText("<html><strong><font color=rgb(0,0,0)>ID: </font></strong>" + m.getId() + "</html>");
-        
-        //concatenate keywords, at most 3
-        if(m.getKeywords() == null) {
-            keywords.setText("<html><strong><font color=rgb(0,0,0)>Keywords: </font></strong>" + "N/A" + "</html>");
-        } else {
-            StringBuilder sb1 = new StringBuilder();
-            int count1 = 0;
-            for(String str : m.getKeywords()) {
-                sb1.append(str + "/");
-                count1++;
-                if(count1 > 2) break;
-            }
-            sb1.deleteCharAt(sb1.length() - 1);
-            keywords.setText("<html><strong><font color=rgb(0,0,0)>Keywords: </font></strong>" + sb1.toString() + "</html>");      
-        }
-        
-        if(m.getDirector() == null) {
-            director.setText("<html><strong><font color=rgb(0,0,0)>Director: </font></strong>" + "N/A" + "</html>");
-        } else {
-            director.setText("<html><strong><font color=rgb(0,0,0)>Director: </font></strong>" + m.getDirector() + "</html>");
-        }
-        
-        
-        if(m.getCast() == null) {
-            cast.setText("<html><strong><font color=rgb(0,0,0)>Cast: </font></strong>" + "N/A" + "</html>");
-        } else {
-            //concatenate cast, at most 3  
-            StringBuilder sb2 = new StringBuilder();
-            int count2 = 0;
-            for (String str : m.getCast()) {
-                sb2.append(str + "/");
-                count2++;
-                if (count2 > 2) {
-                    break;
-                }
-            }
-            sb2.deleteCharAt(sb2.length() - 1);
-            cast.setText("<html><strong><font color=rgb(0,0,0)>Cast: </font></strong>" + sb2.toString() + "</html>");   
-        }
-
-        if(m.getGenres() == null) {
-            genre.setText("<html><strong><font color=rgb(0,0,0)>Genre: </font></strong>" + "N/A" + "</html>");
-        } else {
-            //concatenate genres , at most 3
-            StringBuilder sb3 = new StringBuilder();
-            int count3 = 0;
-            for (String str : m.getGenres()) {
-                sb3.append(str + "/");
-                count3++;
-                if (count3 > 2) {
-                    break;
-                }
-            }
-            sb3.deleteCharAt(sb3.length() - 1);
-            genre.setText("<html><strong><font color=rgb(0,0,0)>Genre: </font></strong>" + sb3.toString() + "</html>");
-        }
-        
-        if(m.getProductCountry() == null) {
-            productionCountry.setText("<html><strong><font color=rgb(0,0,0)>Production Country: </font></strong>" + "N/A" + "</html>");
-        } else {
-            //concatenate country , at most 3
-            StringBuilder sb4 = new StringBuilder();
-            int count4 = 0;
-            for (String str : m.getProductCountry()) {
-                sb4.append(str + "/");
-                count4++;
-                if (count4 > 2) {
-                    break;
-                }
-            }
-            sb4.deleteCharAt(sb4.length() - 1);
-            productionCountry.setText("<html><strong><font color=rgb(0,0,0)>Production Country: </font></strong>" + sb4.toString() + "</html>");
-        }
-        
-        if(m.getLanguages() == null) {
-            langauge.setText("<html><strong><font color=rgb(0,0,0)>Language: </font></strong>" + "N/A" + "</html>");
-        } else {
-            //concatenate language , at most 3
-            StringBuilder sb5 = new StringBuilder();
-            int count5 = 0;
-            for (String str : m.getLanguages()) {
-                sb5.append(str + "/");
-                count5++;
-                if (count5 > 2) {
-                    break;
-                }
-            }
-            sb5.deleteCharAt(sb5.length() - 1);
-            langauge.setText("<html><strong><font color=rgb(0,0,0)>Language: </font></strong>" + sb5.toString() + "</html>");
-        }
-        
-        if(m.getReleaseDate() == null) {
-            releaseDate.setText("<html><strong><font color=rgb(0,0,0)>Released Date: </font></strong>" + "N/A" + "</html>");
-        } else {
-            releaseDate.setText("<html><strong><font color=rgb(0,0,0)>Released Date: </font></strong>" + m.getReleaseDate().toString() + "</html>");
-        }
-        
-        runtime.setText("<html><strong><font color=rgb(0,0,0)>Runtime: </font></strong>" + m.getRunTime() + "min</html>");
-        
-        if(m.getOverview() == null || m.getOverview().isEmpty()) {
-            overview.setText("<html><strong><font color=rgb(0,0,0) size=\"5\">Overview: </font></strong>"+ "N/A" + "</html>");
-        } else {
-            overview.setText("<html><strong><font color=rgb(0,0,0) size=\"5\">Overview: </font></strong>"+ m.getOverview() + "</html>");  
-            overview.setPreferredSize(new Dimension(500, 500));
-        }
-        
-        jTextField.setText("<html><strong>Ratings</strong></html>");
-        ratings.setText(String.valueOf(m.getRatings()));
-        
-        add1.setToolTipText("click to add to watchlist");
-        add2.setToolTipText("click to add to likelist");
-        
-        cards.setLayout(new GridLayout());
-        int count5 = 0;
-        for(Movie movie : m.getSimilarMovies()) {
-            System.out.println(movie.getPoster());
-            MoviePanel similarMovie = new MoviePanel(movie);
-            cards.add(similarMovie);
-            count5++;
-            if(count5 > 4) break;
-        }
-        
-        
+        create(m);          
 //        JPanel control = new JPanel();
 //        control.add(new JButton(new AbstractAction("\u22b2Prev") {
 //
@@ -360,7 +218,7 @@ public class MoviePage extends javax.swing.JFrame {
             }
         });
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel1.setText("Similar Movies");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -376,15 +234,20 @@ public class MoviePage extends javax.swing.JFrame {
                         .addComponent(year)
                         .addContainerGap())
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(poster, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 450, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(add1)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(add2)))
+                        .addComponent(jLabel1)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(overview, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(jPanel2Layout.createSequentialGroup()
+                                    .addComponent(poster, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 450, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(jPanel2Layout.createSequentialGroup()
+                                    .addComponent(add1)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(add2))))
                         .addGap(44, 44, 44)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel2Layout.createSequentialGroup()
@@ -392,12 +255,7 @@ public class MoviePage extends javax.swing.JFrame {
                                 .addGap(0, 0, Short.MAX_VALUE))
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addComponent(ratings, javax.swing.GroupLayout.DEFAULT_SIZE, 134, Short.MAX_VALUE)
-                                .addContainerGap())))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1)
-                            .addComponent(overview, javax.swing.GroupLayout.PREFERRED_SIZE, 696, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 0, Short.MAX_VALUE))))
+                                .addContainerGap())))))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -533,4 +391,152 @@ public class MoviePage extends javax.swing.JFrame {
     private javax.swing.JLabel title;
     private javax.swing.JLabel year;
     // End of variables declaration//GEN-END:variables
+
+    private void create(Movie m) {
+        title.setText(m.getTitle());
+        if(m.getReleaseDate() == null) {
+            year.setText("");
+        } else {
+            year.setText("(" + m.getReleaseDate().getYear() + ")");
+        }
+        
+        try {
+            URL url = new URL(m.getPoster());
+            ImageIcon icon = new ImageIcon(ImageIO.read(url));
+            ImageIcon newIcon = new ImageIcon(icon.getImage().getScaledInstance(300, 372, Image.SCALE_DEFAULT));
+            poster.setIcon(newIcon);
+        } catch(IOException ex) {
+
+        }
+        
+        GridLayout layout = new GridLayout(9, 1);
+        layout.setVgap(10);
+        jPanel3.setLayout(layout);
+        id.setText("<html><strong><font color=rgb(0,0,0)>ID: </font></strong>" + m.getId() + "</html>");
+        
+        //concatenate keywords, at most 3
+        if(m.getKeywords() == null) {
+            keywords.setText("<html><strong><font color=rgb(0,0,0)>Keywords: </font></strong>" + "N/A" + "</html>");
+        } else {
+            StringBuilder sb1 = new StringBuilder();
+            int count1 = 0;
+            for(String str : m.getKeywords()) {
+                sb1.append(str + "/");
+                count1++;
+                if(count1 > 2) break;
+            }
+            sb1.deleteCharAt(sb1.length() - 1);
+            keywords.setText("<html><strong><font color=rgb(0,0,0)>Keywords: </font></strong>" + sb1.toString() + "</html>");      
+        }
+        
+        if(m.getDirector() == null) {
+            director.setText("<html><strong><font color=rgb(0,0,0)>Director: </font></strong>" + "N/A" + "</html>");
+        } else {
+            director.setText("<html><strong><font color=rgb(0,0,0)>Director: </font></strong>" + m.getDirector() + "</html>");
+        }
+        
+        
+        if(m.getCast() == null) {
+            cast.setText("<html><strong><font color=rgb(0,0,0)>Cast: </font></strong>" + "N/A" + "</html>");
+        } else {
+            //concatenate cast, at most 3  
+            StringBuilder sb2 = new StringBuilder();
+            int count2 = 0;
+            for (String str : m.getCast()) {
+                sb2.append(str + "/");
+                count2++;
+                if (count2 > 2) {
+                    break;
+                }
+            }
+            sb2.deleteCharAt(sb2.length() - 1);
+            cast.setText("<html><strong><font color=rgb(0,0,0)>Cast: </font></strong>" + sb2.toString() + "</html>");   
+        }
+
+        if(m.getGenres() == null) {
+            genre.setText("<html><strong><font color=rgb(0,0,0)>Genre: </font></strong>" + "N/A" + "</html>");
+        } else {
+            //concatenate genres , at most 3
+            StringBuilder sb3 = new StringBuilder();
+            int count3 = 0;
+            for (String str : m.getGenres()) {
+                sb3.append(str + "/");
+                count3++;
+                if (count3 > 2) {
+                    break;
+                }
+            }
+            sb3.deleteCharAt(sb3.length() - 1);
+            genre.setText("<html><strong><font color=rgb(0,0,0)>Genre: </font></strong>" + sb3.toString() + "</html>");
+        }
+        
+        if(m.getProductCountry() == null) {
+            productionCountry.setText("<html><strong><font color=rgb(0,0,0)>Production Country: </font></strong>" + "N/A" + "</html>");
+        } else {
+            //concatenate country , at most 3
+            StringBuilder sb4 = new StringBuilder();
+            int count4 = 0;
+            for (String str : m.getProductCountry()) {
+                sb4.append(str + "/");
+                count4++;
+                if (count4 > 2) {
+                    break;
+                }
+            }
+            sb4.deleteCharAt(sb4.length() - 1);
+            productionCountry.setText("<html><strong><font color=rgb(0,0,0)>Production Country: </font></strong>" + sb4.toString() + "</html>");
+        }
+        
+        if(m.getLanguages() == null) {
+            langauge.setText("<html><strong><font color=rgb(0,0,0)>Language: </font></strong>" + "N/A" + "</html>");
+        } else {
+            //concatenate language , at most 3
+            StringBuilder sb5 = new StringBuilder();
+            int count5 = 0;
+            for (String str : m.getLanguages()) {
+                sb5.append(str + "/");
+                count5++;
+                if (count5 > 2) {
+                    break;
+                }
+            }
+            sb5.deleteCharAt(sb5.length() - 1);
+            langauge.setText("<html><strong><font color=rgb(0,0,0)>Language: </font></strong>" + sb5.toString() + "</html>");
+        }
+        
+        if(m.getReleaseDate() == null) {
+            releaseDate.setText("<html><strong><font color=rgb(0,0,0)>Released Date: </font></strong>" + "N/A" + "</html>");
+        } else {
+            releaseDate.setText("<html><strong><font color=rgb(0,0,0)>Released Date: </font></strong>" + m.getReleaseDate().toString() + "</html>");
+        }
+        
+        runtime.setText("<html><strong><font color=rgb(0,0,0)>Runtime: </font></strong>" + m.getRunTime() + "min</html>");
+        
+        if(m.getOverview() == null || m.getOverview().isEmpty()) {
+            overview.setText("<html><strong><font color=rgb(0,0,0) size=\"5\">Overview: </font></strong>"+ "N/A" + "</html>");
+        } else {
+            overview.setText("<html><strong><font color=rgb(0,0,0) size=\"5\">Overview: </font></strong>"+ m.getOverview() + "</html>");  
+            overview.setPreferredSize(new Dimension(500, 500));
+        }
+        
+        jTextField.setText("<html><strong>Ratings</strong></html>");
+        ratings.setText(String.valueOf(m.getRatings()));
+        
+        add1.setToolTipText("click to add to watchlist");
+        add2.setToolTipText("click to add to likelist");
+        
+        cards.setLayout(new GridLayout());
+        int count5 = 0;
+        for(Movie movie : m.getSimilarMovies()) {
+            //System.out.println(movie.getPoster());
+            MoviePanel similarMovie = new MoviePanel(movie, this);
+            cards.add(similarMovie);
+            count5++;
+            if(count5 > 4) break;
+        }
+    }
+    
+    public void refresh(Movie m) {
+        create(m);
+    }
 }

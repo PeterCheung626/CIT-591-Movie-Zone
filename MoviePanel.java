@@ -4,6 +4,8 @@ import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Image;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.net.URL;
 import static javafx.scene.paint.Color.rgb;
@@ -27,12 +29,23 @@ import javax.swing.JPanel;
 public class MoviePanel extends JPanel{
     //private static final JPanel cards = new JPanel(new CardLayout());
     
-    public MoviePanel(Movie m) {
+    public MoviePanel(Movie m, MoviePage mp) {
         BoxLayout l = new BoxLayout(this, BoxLayout.PAGE_AXIS);
         this.setLayout(l);
         JLabel title = new JLabel(m.getTitle());
         JLabel poster = new JLabel();
         JButton details = new JButton("details");
+        details.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                System.out.println("button was clicked!");
+                //MoviePage mp = new MoviePage(m);
+                //new MoviePage(m).setVisible(true);
+                mp.refresh(m);
+            }
+        });
+
+
         title.setPreferredSize(new Dimension(200, 50));
         title.setAlignmentX(Component.CENTER_ALIGNMENT);       
         poster.setAlignmentX(Component.CENTER_ALIGNMENT);
