@@ -83,7 +83,7 @@ public class ExactSearchEngine {
 			// Toast.makeText(getApplicationContext(), "Cound not find movie",
 			// Toast.LENGTH_LONG);
 		} catch (Exception e) {
-                        e.printStackTrace();
+                        //e.printStackTrace();
                         //System.out.println("a movie not found");
 			//e.printStackTrace();
 		}
