@@ -39,8 +39,6 @@ public class MoviePanel extends JPanel{
             @Override
             public void actionPerformed(ActionEvent e) {
                 System.out.println("button was clicked!");
-                //MoviePage mp = new MoviePage(m);
-                //new MoviePage(m).setVisible(true);
                 mp.refresh(m);
             }
         });

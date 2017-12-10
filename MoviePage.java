@@ -5,6 +5,7 @@ import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.net.URL;
 import javax.imageio.ImageIO;
@@ -14,6 +15,7 @@ import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JPanel;
+import user.User;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -26,17 +28,18 @@ import javax.swing.JPanel;
  * @author shenghu
  */
 public class MoviePage extends javax.swing.JFrame {
-    //private static Movie movie;
+
     /**
      * Creates new form MovieWindow
      */
+    private User user;
     
-    
-    public MoviePage(Movie m) {
-        //movie = m;
+    public MoviePage(Movie m, User u) {
         initComponents();
         this.setLocationRelativeTo(null);
-        create(m);          
+        user = u;
+        create(m);
+      
 //        JPanel control = new JPanel();
 //        control.add(new JButton(new AbstractAction("\u22b2Prev") {
 //
@@ -362,7 +365,8 @@ public class MoviePage extends javax.swing.JFrame {
                 ExactSearchEngine ese = new ExactSearchEngine(268);
                 ese.connect();
                 Movie mo = ese.getMovie();
-                new MoviePage(mo).setVisible(true);
+                User user = new User("tpp", "7777888");
+                new MoviePage(mo, user).setVisible(true);
             }
         });
     }
@@ -524,6 +528,24 @@ public class MoviePage extends javax.swing.JFrame {
         
         add1.setToolTipText("click to add to watchlist");
         add2.setToolTipText("click to add to likelist");
+        
+        add1.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                System.out.println("button was clicked!");
+                user.addMovie(String.valueOf(m.getId()));
+                
+            }
+        });
+        
+        add2.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                //System.out.println("button was clicked!");
+                
+            }
+        });
+        
         
         cards.setLayout(new GridLayout());
         int count5 = 0;
