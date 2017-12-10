@@ -317,7 +317,7 @@ public class MoviePage extends javax.swing.JFrame {
             .addComponent(cards, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 600, -1, -1));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 600, 1000, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -362,10 +362,10 @@ public class MoviePage extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 //id=221782/222820/197207 handle exception
-                ExactSearchEngine ese = new ExactSearchEngine(268);
+                ExactSearchEngine ese = new ExactSearchEngine(294254);
                 ese.connect();
                 Movie mo = ese.getMovie();
-                User user = new User("tpp", "7777888");
+                User user = new User("Bobby", "1234567");
                 new MoviePage(mo, user).setVisible(true);
             }
         });
@@ -526,9 +526,10 @@ public class MoviePage extends javax.swing.JFrame {
         jTextField.setText("<html><strong>Ratings</strong></html>");
         ratings.setText(String.valueOf(m.getRatings()));
         
-        add1.setToolTipText("click to add to watchlist");
-        add2.setToolTipText("click to add to likelist");
+        add1.setToolTipText("click to add to likelist");
+        add2.setToolTipText("click to add to watchlist");
         
+        //add1: to user'likelist 
         add1.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -538,23 +539,27 @@ public class MoviePage extends javax.swing.JFrame {
             }
         });
         
+        //add2: to user's watchlist
         add2.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                //System.out.println("button was clicked!");
-                
+                System.out.println("button was clicked!");
+                user.addHistoryMovie(String.valueOf(m.getId()));
             }
         });
         
         
-        cards.setLayout(new GridLayout());
+        cards.setLayout(new GridLayout(1,4));
         int count5 = 0;
         for(Movie movie : m.getSimilarMovies()) {
             //System.out.println(movie.getPoster());
+            if(m.getId() == movie.getId()) {
+                continue;
+            }
             MoviePanel similarMovie = new MoviePanel(movie, this);
             cards.add(similarMovie);
             count5++;
-            if(count5 > 4) break;
+            if(count5 > 3) break;
         }
     }
     

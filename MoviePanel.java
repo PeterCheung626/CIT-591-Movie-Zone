@@ -32,13 +32,14 @@ public class MoviePanel extends JPanel{
     public MoviePanel(Movie m, MoviePage mp) {
         BoxLayout l = new BoxLayout(this, BoxLayout.PAGE_AXIS);
         this.setLayout(l);
+        this.setPreferredSize(new Dimension(140,200));
         JLabel title = new JLabel(m.getTitle());
         JLabel poster = new JLabel();
         JButton details = new JButton("details");
         details.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                System.out.println("button was clicked!");
+                //System.out.println("button was clicked!");
                 mp.refresh(m);
             }
         });
