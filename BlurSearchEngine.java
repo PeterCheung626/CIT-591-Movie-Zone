@@ -26,6 +26,7 @@ public class BlurSearchEngine {
     ArrayList<Movie> movies;
     ArrayList<String> cast;
     int count;
+    int excludeId;
     
     /**
      * constructor for similar/recommend movie search
@@ -34,6 +35,7 @@ public class BlurSearchEngine {
      */
     public BlurSearchEngine (int id, int select) {
         count = 5;
+        excludeId = id;
         if (select == 1) url = head + "/movie/" + id + "/similar" + keyString + "&language=en-US";//&page=1";   
         else url = head + "/movie/" + id + "/recommendations" + keyString + "&language=en-US";//&page=1";
         //System.out.println(url);

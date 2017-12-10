@@ -2,6 +2,7 @@
 import java.awt.BorderLayout;
 import java.awt.CardLayout;
 import java.awt.Dimension;
+import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
@@ -34,10 +35,11 @@ public class MoviePage extends javax.swing.JFrame {
      */
     private User user;
     
-    public MoviePage(Movie m, User u) {
+    public MoviePage(Movie m) {
+    //public MoviePage(Movie m, User u) {
         initComponents();
         this.setLocationRelativeTo(null);
-        user = u;
+        //user = u;
         create(m);
       
 //        JPanel control = new JPanel();
@@ -365,8 +367,9 @@ public class MoviePage extends javax.swing.JFrame {
                 ExactSearchEngine ese = new ExactSearchEngine(294254);
                 ese.connect();
                 Movie mo = ese.getMovie();
-                User user = new User("Bobby", "1234567");
-                new MoviePage(mo, user).setVisible(true);
+                //User user = new User("Bobby", "1234567");
+                new MoviePage(mo).setVisible(true);
+                //new MoviePage(mo, user).setVisible(true);
             }
         });
     }
@@ -397,6 +400,7 @@ public class MoviePage extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
     private void create(Movie m) {
+        System.out.println("displaying movie: " + m.getTitle());
         title.setText(m.getTitle());
         if(m.getReleaseDate() == null) {
             year.setText("");
@@ -548,18 +552,14 @@ public class MoviePage extends javax.swing.JFrame {
             }
         });
         
-        
-        cards.setLayout(new GridLayout(1,4));
-        int count5 = 0;
+        cards.removeAll();  
+        FlowLayout fl = new FlowLayout(FlowLayout.LEADING,60,0);
+        cards.setLayout(fl);
+        //cards.setVGap(0);
         for(Movie movie : m.getSimilarMovies()) {
-            //System.out.println(movie.getPoster());
-            if(m.getId() == movie.getId()) {
-                continue;
-            }
+            System.out.println(movie.getTitle());
             MoviePanel similarMovie = new MoviePanel(movie, this);
             cards.add(similarMovie);
-            count5++;
-            if(count5 > 3) break;
         }
     }
     

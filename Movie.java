@@ -50,7 +50,9 @@ public class Movie {
             try {
                 releaseDate = new Date(m.getString("release_date"));
             } catch (JSONException e) {e.printStackTrace();};
-            runtime = m.getInt("runtime");
+            try {
+                runtime = m.getInt("runtime");
+            } catch (JSONException e) {runtime = 0;}
             ratings = m.getDouble("vote_average");
 
             // get all genres

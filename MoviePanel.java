@@ -10,11 +10,13 @@ import java.io.IOException;
 import java.net.URL;
 import static javafx.scene.paint.Color.rgb;
 import javax.imageio.ImageIO;
+import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -32,23 +34,33 @@ public class MoviePanel extends JPanel{
     public MoviePanel(Movie m, MoviePage mp) {
         BoxLayout l = new BoxLayout(this, BoxLayout.PAGE_AXIS);
         this.setLayout(l);
-        this.setPreferredSize(new Dimension(140,200));
+        this.setPreferredSize(new Dimension(120,200));
+        //this.setSize(90, 200);
+        //this.setBorder(new EmptyBorder(0, 0, 0, 0));
+        //this.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+        
         JLabel title = new JLabel(m.getTitle());
         JLabel poster = new JLabel();
         JButton details = new JButton("details");
         details.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                //System.out.println("button was clicked!");
+                System.out.println("movie switched to : " + m.getTitle());
                 mp.refresh(m);
             }
         });
 
 
-        title.setPreferredSize(new Dimension(200, 50));
+        title.setPreferredSize(new Dimension(120, 50));
         title.setAlignmentX(Component.CENTER_ALIGNMENT);       
         poster.setAlignmentX(Component.CENTER_ALIGNMENT);
         details.setAlignmentX(Component.CENTER_ALIGNMENT);
+        
+        /*
+        title.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+        poster.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+        details.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+        */
         try {
             URL url = new URL(m.getPoster());
             ImageIcon icon = new ImageIcon(ImageIO.read(url));
