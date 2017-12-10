@@ -17,25 +17,29 @@ public class SearchTester {
     
     //dont't run all queries together!!!!(over request limits)
     
-    ExactSearchEngine ese = new ExactSearchEngine(221782);
+    ExactSearchEngine ese = new ExactSearchEngine(36670);
     ese.connect();
     Movie m = ese.getMovie();
-    System.out.println("title: " + m.getTitle());
-    System.out.println("id : " + m.getId());
-    System.out.println("poster : " + m.getPoster());
-    System.out.println("popularity : " + m.getPopularity());
-    //System.out.println("vote average : " + m.getVote());
-    System.out.println("overview : " + m.getOverview());
-    System.out.println("director : " + m.getDirector());
-    System.out.println(m.getReleaseDate()==null);
-    System.out.println(m.getGenres()==null);
-    System.out.println(m.getLanguages()==null);
-    System.out.println(m.getKeywords()==null);
-    System.out.println(m.getProductCountry()==null);
-     System.out.println(m.getCast()==null);
-    
-   // System.out.println(m.getDate()==null);
-    
+//    System.out.println(m == null);
+//    System.out.println("title: " + m.getTitle());
+//    System.out.println("id : " + m.getId());
+//    System.out.println("poster : " + m.getPoster());
+//    System.out.println("popularity : " + m.getPopularity());
+//    //System.out.println("vote average : " + m.getVote());
+//    System.out.println("overview : " + m.getOverview());
+//    System.out.println("director : " + m.getDirector());
+//    System.out.println("date : " + m.getReleaseDate().toString());
+//    System.out.println(m.getDirector() == null);
+//    System.out.println("\n");
+//    System.out.println(m.getReleaseDate()==null);
+//    System.out.println("gernres: " + m.getGenres()==null);
+//    System.out.println(m.getLanguages()==null);
+//    System.out.println(m.getKeywords()==null);
+//    System.out.println(m.getProductCountry()==null);
+//     System.out.println(m.getCast()==null);
+//    
+//    //System.out.println(m.getDate()==null);
+//    
 //        try {
 //            System.out.println(m.getReleaseDate());
 //        } catch (NullPointerException e) {
@@ -75,7 +79,15 @@ public class SearchTester {
 //        } catch (NullPointerException e) {
 //            e.printStackTrace();
 //        }
-    
+//        try {
+//            System.out.println("cast: ");
+//            for (String s : m.getCast()) {
+//                System.out.print(s + " ");
+//            }
+//        } catch (NullPointerException e) {
+//            e.printStackTrace();
+//        }
+//    
     
     
 //    System.out.println();
@@ -89,13 +101,13 @@ public class SearchTester {
 //    for (String s: m.getProductCountry()) {
 //    System.out.println("country: " + s);
 //    }
-    /*
+    
     System.out.println("similiar movies:  ");
     for (Movie s : m.getSimilarMovies()) {
         //System.out.println(s.getId());
         System.out.println(s.getTitle());
     }
-    
+    /*
     System.out.println();
     System.out.println("recommend movies:  ");
     for (Movie s : m.getRecommendations()) {
@@ -151,8 +163,8 @@ public class SearchTester {
 //        System.out.println(b.getPoster());
 //    
 //    }
-    
-    
+//    
+//    
     
     
     }

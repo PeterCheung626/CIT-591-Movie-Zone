@@ -43,7 +43,7 @@ public class Movie {
             try {
                 poster = postHead + m.getString("poster_path");
             } catch (JSONException e) {
-                poster = "https://pbs.twimg.com/profile_images/600060188872155136/st4Sp6Aw.jpg";
+                poster = "https://static.tumblr.com/opuuuju/lWjn7izq1/coming-soon.png";
                 System.out.println("poster not found: " + id);
             }
             overview = m.getString("overview");
