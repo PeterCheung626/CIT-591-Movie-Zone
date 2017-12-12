@@ -32,7 +32,7 @@ import javax.swing.SwingUtilities;
 
 public class SimilarMoviesPanel extends JPanel{
 	private static final JPanel cards = new JPanel(new CardLayout());
-	
+	/*
 	public SimilarMoviesPanel() {
 		this.setLayout(new GridLayout(1, 4));
 		String t1 = "Jack Reacher: Never Go Back";
@@ -58,6 +58,7 @@ public class SimilarMoviesPanel extends JPanel{
 		//this.setSize(new Dimension(1000, 800));
 
 	}
+*/
 	
 	public static void main(String[] args) throws Exception {
 		//SwingUtilities.invokeAndWait(new Runnable() {

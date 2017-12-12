@@ -15,6 +15,7 @@ import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JFrame;
 import javax.swing.JPanel;
 import user.User;
 
@@ -39,6 +40,7 @@ public class MoviePage extends javax.swing.JFrame {
     //public MoviePage(Movie m, User u) {
         initComponents();
         this.setLocationRelativeTo(null);
+        this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         //user = u;
         create(m);
       
@@ -176,7 +178,7 @@ public class MoviePage extends javax.swing.JFrame {
                     .addComponent(releaseDate)
                     .addComponent(runtime)
                     .addComponent(langauge))
-                .addGap(0, 0, 0))
+                .addContainerGap(307, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -244,16 +246,15 @@ public class MoviePage extends javax.swing.JFrame {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(overview, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(jPanel2Layout.createSequentialGroup()
-                                    .addComponent(poster, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 450, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(jPanel2Layout.createSequentialGroup()
-                                    .addComponent(add1)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addComponent(add2))))
-                        .addGap(44, 44, 44)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
+                                .addComponent(add1)
+                                .addGap(18, 18, 18)
+                                .addComponent(add2))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
+                                .addComponent(poster, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 485, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(9, 9, 9)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addComponent(jTextField)
@@ -364,7 +365,7 @@ public class MoviePage extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 //id=221782/222820/197207 handle exception
-                ExactSearchEngine ese = new ExactSearchEngine(294254);
+                ExactSearchEngine ese = new ExactSearchEngine(9489);
                 ese.connect();
                 Movie mo = ese.getMovie();
                 //User user = new User("Bobby", "1234567");
@@ -400,7 +401,7 @@ public class MoviePage extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
     private void create(Movie m) {
-        System.out.println("displaying movie: " + m.getTitle());
+        //System.out.println("displaying movie: " + m.getTitle());
         title.setText(m.getTitle());
         if(m.getReleaseDate() == null) {
             year.setText("");
@@ -557,7 +558,7 @@ public class MoviePage extends javax.swing.JFrame {
         cards.setLayout(fl);
         //cards.setVGap(0);
         for(Movie movie : m.getSimilarMovies()) {
-            System.out.println(movie.getTitle());
+            //System.out.println(movie.getTitle());
             MoviePanel similarMovie = new MoviePanel(movie, this);
             cards.add(similarMovie);
         }

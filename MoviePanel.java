@@ -45,7 +45,7 @@ public class MoviePanel extends JPanel{
         details.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                System.out.println("movie switched to : " + m.getTitle());
+                //System.out.println("movie switched to : " + m.getTitle());
                 mp.refresh(m);
             }
         });

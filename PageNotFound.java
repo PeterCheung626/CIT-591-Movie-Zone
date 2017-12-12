@@ -1,4 +1,5 @@
 
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 
 /*
@@ -19,6 +20,7 @@ public class PageNotFound extends javax.swing.JFrame {
     public PageNotFound() {
         initComponents();
         this.setLocationRelativeTo(null);
+        this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         jLabel1.setHorizontalAlignment(JLabel.CENTER);
     }
 
