@@ -7,6 +7,8 @@ package moviezone;
 
 import java.util.ArrayList;
 import java.util.Comparator;
+import java.util.HashMap;
+import java.util.Random;
 import org.json.*;
 
 public class Movie {
@@ -172,6 +174,27 @@ public class Movie {
         return false;
     }
 
+    public static ArrayList<Movie> recommend(ArrayList<Movie> like, ArrayList<Movie> watched) {
+        ArrayList<Movie> rec = new ArrayList<>();
+        HashMap<Integer, Movie> history = new HashMap<>();
+        for (Movie m: watched) {
+            history.put(m.getId(), m);
+        }
+        Random random = new Random();
+        int recTime = 0;
+        while (recTime < like.size()) {
+            int r = random.nextInt(like.size());
+            ArrayList<Movie> singleList = like.get(r).getRecommendations();
+            for (Movie tmp : singleList) {
+                if (!history.keySet().contains(tmp.getId())) {
+                    rec.add(tmp);
+                }
+                if (rec.size() >= 5) return rec;
+            }
+            recTime++;
+        }
+        return rec;
+    }
     public int getId() {
         return id;
     }

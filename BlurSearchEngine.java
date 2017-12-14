@@ -36,7 +36,7 @@ public class BlurSearchEngine {
         count = 5;
         if (select == 1) url = head + "/movie/" + id + "/similar" + keyString + "&language=en-US&page=1";//&page=1";   
         else url = head + "/movie/" + id + "/recommendations" + keyString + "&language=en-US";//&page=1";
-        System.out.println(url);
+        //System.out.println(url);
     }
     
     /**
@@ -64,7 +64,7 @@ public class BlurSearchEngine {
 				url = head + "/search/keyword" + keyString + "&query=" + condition.replace(" ", "%20") + "&language=en-US&page=1";
 			}
     		}
-                System.out.println(url);
+                //System.out.println(url);
     }
     
    
