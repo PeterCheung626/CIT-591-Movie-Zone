@@ -1,0 +1,12 @@
+Project name: Movie zone
+
+Description: 
+This project aims to  maintain a movie database of users own and provide recommendations for them such as movie reviewers and audiences based on their interested topics. The software first allows users sign up. After logging in, users can search the movies and  save the movies they have watched. The users can search the movies by selecting tags of movies such as id, title and keyword. The users can also review the movie after watching and saving these information into their own database. In addition, we analyze the attributes of watched movies such as genres and keywords in plot. So the system can recommend movies based on them. The users can later look for the movie in their own database. 
+
+Break Down 
+Sheng Hu: Processing raw data. Realize graphic user interface
+Yitian Ma: Realize the search function.  Realize and maintain an user database
+Yufan Cheng: Build up user authentication. Realize the recommendation system
+
+GitHub link: 
+https://github.com/cit-upenn/cit-591-fall-2017-project-movie-zone
