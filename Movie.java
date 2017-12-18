@@ -36,6 +36,10 @@ public class Movie {
     private static final Comparator<Movie> BY_DATE = new ByDate();
 
     public Movie(JSONObject m) {
+        parseJson(m);
+    }
+	
+    public void parseJson(JSONObject m) {
         keywords = new ArrayList<>();
         cast = new ArrayList<>();
         try {
@@ -48,7 +52,13 @@ public class Movie {
                 poster = "https://static.tumblr.com/opuuuju/lWjn7izq1/coming-soon.png";
                 System.out.println("poster not found: " + id);
             }
-            overview = m.getString("overview");
+            try {
+                overview = m.getString("overview");
+            } catch (JSONException e) {
+                System.out.println("overview not found");
+                overview = "not found";
+            }
+            
             try {
                 releaseDate = new Date(m.getString("release_date"));
             } catch (JSONException e) {e.printStackTrace();};
@@ -63,7 +73,7 @@ public class Movie {
                     JSONObject genre = g.getJSONObject(i);
                     genres.add(genre.getString("name"));
                 }
-            } catch (JSONException e) {e.printStackTrace();};
+            } catch (Exception e) {e.printStackTrace();};
      
             //get product countries
             try {
@@ -73,7 +83,7 @@ public class Movie {
                     JSONObject country = pc.getJSONObject(i);
                     productCountry.add(country.getString("name"));
                 }
-            } catch (JSONException e) { e.printStackTrace();}
+            } catch (Exception e) { e.printStackTrace();}
 
             try {
                 languages = new ArrayList<>();
@@ -82,7 +92,7 @@ public class Movie {
                     JSONObject language = lang.getJSONObject(i);
                     languages.add(language.getString("name"));
                 }
-            } catch (JSONException e) { e.printStackTrace();}
+            } catch (Exception e) { e.printStackTrace();}
 
         } catch (JSONException e) {
             e.printStackTrace();
@@ -90,7 +100,6 @@ public class Movie {
 
         }
     }
-	
 	/**
 	 * this method add a keywords of this movie
 	 * @author mayitian
@@ -192,7 +201,7 @@ public class Movie {
                 if (rec.size() >= 5) return rec;
             }
             recTime++;
-        }
+    }
         return rec;
     }
     public int getId() {

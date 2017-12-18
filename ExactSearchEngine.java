@@ -25,20 +25,26 @@ public class ExactSearchEngine {
 	private Movie movie;
 	private String keyUrl;
         private String castUrl;
+        private int id;
         
 	/**
 	 * constructor that takes the movie id
 	 * @param id
 	 */
 	public ExactSearchEngine(int id) {
-            
-		url = head + "/movie/" + id + keyString;
-		keyUrl = head + "/movie/" + id + "/keywords" + keyString;
-                castUrl = head + "/movie/" + id + "/credits" + keyString;
+            if (id > 0) {
+		this.id = id;
+                this.formUrl();
                 //System.out.println(url);
-        
+                this.connect();
+            }
 	}
 
+        public void formUrl() {
+            url = head + "/movie/" + id + keyString;
+		keyUrl = head + "/movie/" + id + "/keywords" + keyString;
+                castUrl = head + "/movie/" + id + "/credits" + keyString;
+        }
 	/**
 	 * this method get json object from url
 	 * this method connect url for movie details
@@ -96,8 +102,10 @@ public class ExactSearchEngine {
 	 * @param id
 	 */
 	public void reset(int id) {
-		url = head + "/movie/" + id + keyString;
+		this.id = id;
+                formUrl();
 		movie = null;
+                this.connect();
 	}
 
 	/**

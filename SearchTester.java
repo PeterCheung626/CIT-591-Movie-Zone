@@ -20,17 +20,21 @@ public class SearchTester {
     
     //dont't run all queries together!!!!(over request limits)
     
-//    ExactSearchEngine ese = new ExactSearchEngine(36670);
-//    ese.connect();
-//    Movie m = ese.getMovie();
-//    System.out.println(m == null);
+    ExactSearchEngine ese = new ExactSearchEngine(36670);
+    //ese.connect();
+    ese.reset(1);
+    Movie m = ese.getMovie();
+    System.out.println(m == null);
+   
 //    System.out.println("title: " + m.getTitle());
 //    System.out.println("id : " + m.getId());
 //    System.out.println("poster : " + m.getPoster());
 //    System.out.println("popularity : " + m.getPopularity());
 //    //System.out.println("vote average : " + m.getVote());
+//    try {
 //    System.out.println("overview : " + m.getOverview());
 //    System.out.println("director : " + m.getDirector());
+//    } catch (Exception e) {e.printStackTrace();}
 //    System.out.println("date : " + m.getReleaseDate().toString());
 //    System.out.println(m.getDirector() == null);
 //    System.out.println("\n");
@@ -41,7 +45,7 @@ public class SearchTester {
 //    System.out.println(m.getProductCountry()==null);
 //     System.out.println(m.getCast()==null);
 //    
-//    //System.out.println(m.getDate()==null);
+//    System.out.println(m.getReleaseDate()==null);
 //    
 //        try {
 //            System.out.println(m.getReleaseDate());
@@ -110,13 +114,13 @@ public class SearchTester {
 //        //System.out.println(s.getId());
 //        System.out.println(s.getTitle());
 //    }
-    /*
-    System.out.println();
-    System.out.println("recommend movies:  ");
-    for (Movie s : m.getRecommendations()) {
-        //System.out.println(s.getId());
-        System.out.println(s.getTitle());
-    }
+    
+//    System.out.println();
+//    System.out.println("recommend movies:  ");
+//    for (Movie s : m.getRecommendations()) {
+//        //System.out.println(s.getId());
+//        System.out.println(s.getTitle());
+//    }
       /* 
     // to search movies by title, call blurSearchEngine constructor with a string representing the title
     BlurSearchEngine bse = new BlurSearchEngine("superman");
@@ -150,51 +154,51 @@ public class SearchTester {
 //    
 //    }
     
-    ExactSearchEngine ese1 = new ExactSearchEngine(36670);
-    ese1.connect();
-    Movie m1 = ese1.getMovie();
-    System.out.println(m1.getTitle());
-        
-    ExactSearchEngine ese2 = new ExactSearchEngine(954);
-    ese2.connect();
-    Movie m2 = ese2.getMovie();
-    System.out.println(m1.getTitle());
-    
-    ArrayList<Movie> like = m1.getSimilarMovies();
-    try {
-            Thread.sleep(5000);
-        } catch (InterruptedException ex) {
-            Thread.currentThread().interrupt();
-        }
-    ArrayList<Movie> watch = m2.getSimilarMovies();
-    try {
-            Thread.sleep(5000);
-        } catch (InterruptedException ex) {
-            Thread.currentThread().interrupt();
-        }
-    
-        System.out.println("like list:");
-          System.out.println(like.size());
-    for (Movie b : like) {
-        System.out.println(b.getTitle());
-    
-    }
+//    ExactSearchEngine ese1 = new ExactSearchEngine(36670);
+//    ese1.connect();
+//    Movie m1 = ese1.getMovie();
+//    System.out.println(m1.getTitle());
+//        
+//    ExactSearchEngine ese2 = new ExactSearchEngine(954);
+//    ese2.connect();
+//    Movie m2 = ese2.getMovie();
+//    System.out.println(m1.getTitle());
+//    
+//    ArrayList<Movie> like = m1.getSimilarMovies();
+//    try {
+//            Thread.sleep(5000);
+//        } catch (InterruptedException ex) {
+//            Thread.currentThread().interrupt();
+//        }
+//    ArrayList<Movie> watch = m2.getSimilarMovies();
+//    try {
+//            Thread.sleep(5000);
+//        } catch (InterruptedException ex) {
+//            Thread.currentThread().interrupt();
+//        }
+//    
+//        System.out.println("like list:");
+//          System.out.println(like.size());
+//    for (Movie b : like) {
+//        System.out.println(b.getTitle());
+//    
+//    }
+//
+//        System.out.println("watch list:");
+//          System.out.println(watch.size());
+//    for (Movie b : watch) {
+//        System.out.println(b.getTitle());
+//    
+//    }
 
-        System.out.println("watch list:");
-          System.out.println(watch.size());
-    for (Movie b : watch) {
-        System.out.println(b.getTitle());
-    
-    }
-
     
     
 
-    ArrayList<Movie> rec = Movie.recommend(like, watch);
-    System.out.println("reccomend list:");
-    for (Movie m : rec) {
-        System.out.println(m.getTitle());
-    }
+//    ArrayList<Movie> rec = Movie.recommend(like, watch);
+//    System.out.println("reccomend list:");
+//    for (Movie m : rec) {
+//        System.out.println(m.getTitle());
+//    }
     
 //    
 //    //search for upcoming movies
